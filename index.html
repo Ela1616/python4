@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Full Course - Премиум курс</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+
+    <header>
+        🐍 Python Full Premium Course
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Python программалау тілін үйренуге арналған интерактивті курс
+        </div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchBox" placeholder="🔍 Іздеу - бөлімдер бойынша іздеу">
+    </div>
+
+    <div class="container">
+        <div class="progress-container">
+            <h3>📊 Сіздің оқу прогрессіңіз</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">Прогресс: 0/11 сабақ (0%)</div>
+        </div>
+
+        <div class="buttons-grid">
+            <button data-search data-lesson-id="intro" onclick="window.location.href='pages/python_intro.html'">
+                🎯 Python деген не?
+            </button>
+            
+            <button data-search data-lesson-id="install" onclick="window.location.href='pages/install.html'">
+                ⚙️ Python орнату
+            </button>
+            
+            <button data-search data-lesson-id="print_input" onclick="window.location.href='pages/print_input.html'">
+                📝 print/input
+            </button>
+            
+            <button data-search data-lesson-id="variables" onclick="window.location.href='pages/variables.html'">
+                🏷️ Айнымалылар
+            </button>
+            
+            <button data-search data-lesson-id="if_else" onclick="window.location.href='pages/if_else.html'">
+                🔀 if/else
+            </button>
+            
+            <button data-search data-lesson-id="loops" onclick="window.location.href='pages/loops.html'">
+                🔄 Циклдар
+            </button>
+            
+            <button data-search data-lesson-id="functions" onclick="window.location.href='pages/functions.html'">
+                ⚡ Функциялар
+            </button>
+            
+            <button data-search data-lesson-id="calculator" onclick="window.location.href='pages/project_calc.html'">
+                🧮 Калькулятор жобасы
+            </button>
+            
+            <button data-search data-lesson-id="bot" onclick="window.location.href='pages/project_bot.html'">
+                🤖 Telegram бот жобасы
+            </button>
+            
+            <button data-search data-lesson-id="practice" onclick="window.location.href='pages/practice.html'">
+                💪 Практика
+            </button>
+            
+            <button data-search data-lesson-id="quiz" onclick="window.location.href='pages/mini_test.html'">
+                🧠 Мини-тест
+            </button>
+            
+            <button data-search onclick="window.location.href='pages/videos.html'">
+                🎥 YouTube сабақтары
+            </button>
+            
+            <button data-search onclick="window.location.href='pages/interactive_editor.html'">
+                💻 Интерактивті Python редакторы
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
