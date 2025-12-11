@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram бот жобасы</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+    
+    <header>
+        🤖 Telegram бот жобасы
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Өз Telegram ботаңызды жасаңыз
+        </div>
+    </header>
+
+    <div class="lesson-page">
+        <h1>🤖 Python Telegram Bot жобасы</h1>
+        
+        <div class="content-box">
+            <h2>🎯 Жоба мақсаты</h2>
+            <p>Бұл сабақта сіз Telegram Bot API көмегімен өз Telegram ботаңызды жасайсыз. Бот мынадай мүмкіндіктерге ие болады:</p>
+            <ul style="text-align: left;">
+                <li>👋 Пайдаланушыларды қарсы алу</li>
+                <li>🧮 Калькулятор функциясы</li>
+                <li>🎲 Кездейсоқ сан генерациялау</li>
+                <li>📅 Күн мен уақыт көрсету</li>
+                <li>🎮 Қарапайым ойындар</li>
+            </ul>
+        </div>
+
+        <div class="content-box">
+            <h2>🛠️ Қажетті құралдар</h2>
+            <ol style="text-align: left; line-height: 1.8;">
+                <li>📱 <strong>Telegram аккаунты</strong></li>
+                <li>🤖 <strong>@BotFather</strong> - Telegram бот құру үшін</li>
+                <li>💻 <strong>Python кітапханалары:</strong>
+                    <ul>
+                        <li><code>pip install python-telegram-bot</code></li>
+                        <li><code>pip install python-dotenv</code> (.env файл үшін)</li>
+                    </ul>
+                </li>
+                <li>🌐 <strong>Интернет байланысы</strong></li>
+            </ol>
+        </div>
+
+        <div class="content-box">
+            <h2>🚀 1-қадам: BotFather-дан бот құру</h2>
+            <ol style="text-align: left; line-height: 1.8;">
+                <li>Telegram-да <strong>@BotFather</strong> іздеңіз</li>
+                <li><strong>/newbot</strong> командасын жіберіңіз</li>
+                <li>Бот атын енгізіңіз (мысалы: "Менің калькулятор ботым")</li>
+                <li>Бот username-ін енгізіңіз (мысалы: "my_calc_bot")</li>
+                <li><strong>BotFather</strong> сізге <strong>token</strong> береді (сақтап қойыңыз!)</li>
+            </ol>
+            <pre>Bot token: 123456789:ABCdefGHIjklMNOpqrsTUVwxyz
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        Бұл token-ды ешкімге айтпаңыз!</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>💻 2-қадам: Негізгі бот коды</h2>
+            <pre># main.py
+from telegram import Update
+from telegram.ext import Application, CommandHandler, MessageHandler, CallbackContext, filters
+import random
+import datetime
+
+# Bot token (BotFather-дан алған token)
+BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+
+# Командалар
+async def start(update: Update, context: CallbackContext):
+    welcome_message = """
+🤖 Сәлем! Мен сіздің Python ботпын!
+
+Менің мүмкіндіктерім:
+/help - Көмек алу
+/calc - Калькулятор
+/random - Кездейсоқ сан
+/time - Қазіргі уақыт
+    """
+    await update.message.reply_text(welcome_message)
+
+async def help_command(update: Update, context: CallbackContext):
+    help_text = """
+🆘 Көмек менюі:
+
+📝 Командалар:
+/start - Ботты іске қосу
+/help - Бұл мәзір
+/calc - Калькулятор ашу
+/random - Кездейсоқ сан (1-100)
+/time - қазіргі уақыт
+
+💬 Мәтін хабарламалар:
+- "Сәлем" десеңіз, қарсы аламын
+- "Бота" десеңіз, жауап беремін
+    """
+    await update.message.reply_text(help_text)
+
+async def calculator(update: Update, context: CallbackContext):
+    await update.message.reply_text("""
+🧮 Калькулятор:
+Сандарды енгізіңіз (мысалы: 5 + 3)
+    """)
+
+async def random_number(update: Update, context: CallbackContext):
+    number = random.randint(1, 100)
+    await update.message.reply_text(f"🎲 Сіздің кездейсоқ сан: {number}")
+
+async def current_time(update: Update, context: CallbackContext):
+    now = datetime.datetime.now()
+    time_str = now.strftime("%Y-%m-%d %H:%M:%S")
+    await update.message.reply_text(f"📅 Қазіргі уақыт: {time_str}")
+
+# Мәтін хабарламаларды өңдеу
+async def handle_message(update: Update, context: CallbackContext):
+    text = update.message.text.lower()
+    
+    if text == "сәлем" or text == "салом":
+        await update.message.reply_text("👋 Сәлем! Қалыңыз қалай?")
+    
+    elif text == "бот" or text == "bot":
+        await update.message.reply_text("🤖 Мен мынадамын! Нені көмек керек?")
+    
+    elif "калькулятор" in text or "есепте" in text:
+        await update.message.reply_text("🧮 Калькулятор: 5 + 3 деп жазып көріңіз!")
+    
+    # Қарапайым калькулятор логикасы
+    elif any(op in text for op in ['+', '-', '*', '/']):
+        try:
+            # Қауіпсіздік үшін тек сандар мен операторларды алу
+            if all(c in '0123456789+-*/. ' for c in text):
+                result = eval(text)
+                await update.message.reply_text(f"🧮 Нәтиже: {result}")
+            else:
+                await update.message.reply_text("❌ Қате формат! Мысалы: 5 + 3")
+        except:
+            await update.message.reply_text("❌ Қате! Мысалы: 5 + 3")
+    
+    else:
+        await update.message.reply_text("🤔 Мен түсінбедим. /help жазып көріңіз!")
+
+# Негізгі функция
+def main():
+    # Бот қосымшасын құру
+    application = Application.builder().token(BOT_TOKEN).build()
+    
+    # Командаларды қосу
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("help", help_command))
+    application.add_handler(CommandHandler("calc", calculator))
+    application.add_handler(CommandHandler("random", random_number))
+    application.add_handler(CommandHandler("time", current_time))
+    
+    # Мәтін хабарламаларды өңдеу
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+    
+    print("🤖 Бот іске қосылды...")
+    
+    # Ботты іске қосу
+    application.run_polling()
+
+if __name__ == "__main__":
+    main()</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>⚙️ 3-қадам: .env файлы (Қауіпсіздік)</h2>
+            <p>Bot token-ын кодта көрсету қауіпсіз емес. .env файлын қолданыңыз:</p>
+            
+            <h4>.env файлын құру:</h4>
+            <pre># .env
+BOT_TOKEN=123456789:ABCdefGHIjklMNOpqrsTUVwxyz</pre>
+            
+            <h4>main.py файлын жаңарту:</h4>
+            <pre>import os
+from dotenv import load_dotenv
+from telegram import Update
+from telegram.ext import Application, CommandHandler, MessageHandler, CallbackContext, filters
+
+# .env файлын жүктеу
+load_dotenv()
+
+BOT_TOKEN = os.getenv('BOT_TOKEN')</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>🎯 4-қадам: Ботты іске қосу</h2>
+            <ol style="text-align: left; line-height: 1.8;">
+                <li>📁 <strong>Жоба қалтасын құрыңыз</strong></li>
+                <li>📄 <strong>main.py файлын сақтаңыз</strong></li>
+                <li>🔐 <strong>.env файлын құрып, token-ды енгізіңіз</strong></li>
+                <li>💾 <strong>Кітапханаларды орнатыңыз:</strong>
+                    <pre>pip install python-telegram-bot python-dotenv</pre>
+                </li>
+                <li>▶️ <strong>Ботты іске қосыңыз:</strong>
+                    <pre>python main.py</pre>
+                </li>
+                <li>📱 <strong>Telegram-да ботыңызды тексеріңіз</strong></li>
+            </ol>
+        </div>
+
+        <div class="content-box">
+            <h2>🎮 Кеңейтілген мүмкіндіктер</h2>
+            
+            <h3>🎲 Кездейсоқ ойын</h3>
+            <pre>async def guess_number_game(update: Update, context: CallbackContext):
+    # 1-ден 10-ға дейінгі санды табу ойыны
+    if 'target_number' not in context.user_data:
+        context.user_data['target_number'] = random.randint(1, 10)
+        context.user_data['attempts'] = 0
+    
+    try:
+        guess = int(update.message.text)
+        context.user_data['attempts'] += 1
+        
+        if guess == context.user_data['target_number']:
+            await update.message.reply_text(f"🎉 Дұрыс! {context.user_data['attempts']} рет болжадыңыз!")
+            del context.user_data['target_number']
+            del context.user_data['attempts']
+        elif guess < context.user_data['target_number']:
+            await update.message.reply_text("⬆️ Үлкен санды болжаңыз!")
+        else:
+            await update.message.reply_text("⬇️ Кіші санды болжаңыз!")
+    except ValueError:
+        await update.message.reply_text("Сан енгізіңіз (1-10)!")</pre>
+
+            <h3>📝 Ескерткілер</h3>
+            <pre>async def add_note(update: Update, context: CallbackContext):
+    note = update.message.text.replace('/note ', '')
+    if 'notes' not in context.user_data:
+        context.user_data['notes'] = []
+    context.user_data['notes'].append(note)
+    await update.message.reply_text(f"📝 Ескерткі сақталды: {note}")
+    
+async def show_notes(update: Update, context: CallbackContext):
+    if 'notes' in context.user_data and context.user_data['notes']:
+        notes_text = "\n".join([f"{i+1}. {note}" for i, note in enumerate(context.user_data['notes'])])
+        await update.message.reply_text(f"📋 Сіздің ескерткілеріңіз:\n{notes_text}")
+    else:
+        await update.message.reply_text("📭 Әлі ескерткі жоқ!")</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>⚠️ Маңызды кеңестер</h2>
+            <ul style="text-align: left; line-height: 1.8;">
+                <li>🔐 <strong>Token-ды қорғаңыз</strong> - ешкімге бермеңіз</li>
+                <li>🛡️ <strong>Қауіпсіздік</strong> - eval() функциясын қолданғанда сақ болыңыз</li>
+                <li>📊 <strong>Логтау</strong> - қателерді бақылаңыз</li>
+                <li>🔄 <strong>Өңдеу</strong> - қателерді дұрыс өңдеңіз</li>
+                <li>🚀 <strong>Hosting</strong> - Heroku, Render сияқты қызметтерді қолданыңыз</li>
+            </ul>
+        </div>
+
+        <div class="content-box">
+            <h2>🏠 Домашнее задание</h2>
+            <ol style="text-align: left; line-height: 1.8;">
+                <li>📱 <strong>BotFather-дан бот құрыңыз</strong></li>
+                <li>💻 <strong>Негізгі кодты жазыңыз</strong></li>
+                <li>🧪 <strong>Барлық функцияларды тексеріңіз</strong></li>
+                <li>🎮 <strong>Жаңа функция қосыңыз</strong> (мысалы, погода, анекдот)</li>
+                <li>📝 <strong>Документация жазыңыз</strong> - ботты қалай қолдану керек</li>
+            </ol>
+        </div>
+
+        <button onclick="markLessonComplete('bot')" style="background: linear-gradient(45deg, #27ae60, #2ecc71); margin: 20px 0;">
+            ✅ Осы сабақты аяқтадым
+        </button>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://www.youtube.com/watch?v=5fO0j9cRdCw" target="_blank" class="video-link">
+                ▶️ YouTube: Telegram Bot Tutorial
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="back-btn" onclick="window.location.href='project_calc.html'">
+                ⬅️ Артқа
+            </button>
+            <button onclick="window.location.href='practice.html'" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                Келесі сабақ ➡️
+            </button>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

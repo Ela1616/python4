@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python орнату</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+    
+    <header>
+        ⚙️ Python орнату
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Бастау үшін қажетті құралдар
+        </div>
+    </header>
+
+    <div class="lesson-page">
+        <h1>🛠️ Python орнату нұсқаулығы</h1>
+        
+        <div class="content-box">
+            <h2>🐍 1. Python орнату</h2>
+            <p>Алдымен Python тілін компьютеріңізге орнату керек:</p>
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="https://www.python.org/downloads/" target="_blank" class="video-link" style="font-size: 18px;">
+                    📥 python.org/downloads
+                </a>
+            </div>
+            <p><strong>Маңызды:</strong> Орнату кезінде "Add Python to PATH" дегенді міндетті түрде таңдаңыз!</p>
+        </div>
+
+        <div class="content-box">
+            <h2>💻 2. Visual Studio Code орнату</h2>
+            <p>Код жазу үшін ыңғайлы редактор керек:</p>
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="https://code.visualstudio.com/" target="_blank" class="video-link" style="font-size: 18px;">
+                    📥 code.visualstudio.com
+                </a>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>🔌 3. Python кеңейтімін орнату</h2>
+            <div style="background: #2c3e50; color: #ecf0f1; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <p><strong>VS Code-та:</strong></p>
+                <ol style="text-align: left;">
+                    <li>Сол жақ панельден Extensions (Ctrl+Shift+X) басыңыз</li>
+                    <li>Іздеу жолағына "Python" жазыңыз</li>
+                    <li>"Python" кеңейтімін тауып Install басыңыз</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>🎯 Тексеру</h2>
+            <p>Орнату аяқталғаннан кейін тексеріп көріңіз:</p>
+            <pre># Terminal-да (Command Prompt) тексеру:
+python --version
+# Немесе:
+python3 --version
+
+# Егер нұсқасы көрінсе, сәтті орнатылды!</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>🚀 Алғашқы қадам</h2>
+            <p>Енді алғашқы Python файлын жасап көріңіз:</p>
+            <pre>1. VS Code ашыңыз
+2. File → New File
+3. "hello.py" деп сақтаңыз
+4. Код жазыңыз: print("Сәлем, Python!")
+5. F5 немесе Run басыңыз</pre>
+            <button onclick="markLessonComplete('install')" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                ✅ Осы сабақты аяқтадым
+            </button>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://www.youtube.com/watch?v=YYXdXT2l-Gg" target="_blank" class="video-link">
+                ▶️ YouTube: Python орнату нұсқаулығы
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="back-btn" onclick="window.location.href='python_intro.html'">
+                ⬅️ Артқа
+            </button>
+            <button onclick="window.location.href='print_input.html'" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                Келесі сабақ ➡️
+            </button>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

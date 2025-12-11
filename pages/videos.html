@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube сабақтары</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <style>
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: #3498db;
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail::before {
+            content: '▶️';
+            position: absolute;
+            font-size: 60px;
+            opacity: 0.8;
+        }
+        
+        .video-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .video-description {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .video-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .video-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .beginner {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .intermediate {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .advanced {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .search-filter {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #3498db;
+            background: transparent;
+            color: #3498db;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+    
+    <header>
+        🎥 YouTube Python сабақтары
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Үздік видео ресурстары
+        </div>
+    </header>
+
+    <div class="lesson-page">
+        <h1>📚 Python видео сабақтары</h1>
+        
+        <div class="search-filter">
+            <h3>🔍 Сүзгілеу:</h3>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterVideos('all')">Барлығы</button>
+                <button class="filter-btn" onclick="filterVideos('beginner')">Бастауыш</button>
+                <button class="filter-btn" onclick="filterVideos('intermediate')">Орташа</button>
+                <button class="filter-btn" onclick="filterVideos('advanced')">Жоғарғы</button>
+                <button class="filter-btn" onclick="filterVideos('projects')">Жобалар</button>
+            </div>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-card" data-category="beginner">
+                <div class="video-thumbnail">🐍</div>
+                <span class="difficulty beginner">Бастауыш</span>
+                <h3 class="video-title">Python Basics - Complete Course</h3>
+                <p class="video-description">
+                    Python-дың негізінен бастап үйренуге арналған толық курс. 4 сағаттық видеода барлық негізгі тақырыптар қамтылған.
+                </p>
+                <a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="video-link">
+                    ▶️ Көру (4:26:59)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="beginner">
+                <div class="video-thumbnail">📝</div>
+                <span class="difficulty beginner">Бастауыш</span>
+                <h3 class="video-title">Python Print & Input Tutorial</h3>
+                <p class="video-description">
+                    print() және input() функцияларын қолдану туралы толық нұсқаулық. Практикалық мысалдармен.
+                </p>
+                <a href="https://www.youtube.com/watch?v=k9TUPpGqYTo" target="_blank" class="video-link">
+                    ▶️ Көру (15:32)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="beginner">
+                <div class="video-thumbnail">🔀</div>
+                <span class="difficulty beginner">Бастауыш</span>
+                <h3 class="video-title">Python If/Else Conditions</h3>
+                <p class="video-description">
+                    Шартты операторларды (if/else) толық меңгеру. Мысалдармен түсіндіру.
+                </p>
+                <a href="https://www.youtube.com/watch?v=f4KOjWS_KZs" target="_blank" class="video-link">
+                    ▶️ Көру (18:45)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="beginner">
+                <div class="video-thumbnail">🔄</div>
+                <span class="difficulty beginner">Бастауыш</span>
+                <h3 class="video-title">Python Loops Tutorial</h3>
+                <p class="video-description">
+                    for және while циклдарын үйрену. Практикалық жаттығулармен.
+                </p>
+                <a href="https://www.youtube.com/watch?v=6iF8Xb7Z3wQ" target="_blank" class="video-link">
+                    ▶️ Көру (25:18)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="beginner">
+                <div class="video-thumbnail">⚡</div>
+                <span class="difficulty beginner">Бастауыш</span>
+                <h3 class="video-title">Python Functions Explained</h3>
+                <p class="video-description">
+                    Функцияларды анықтау және қолдану. Қайта пайдаланылатын код жасау.
+                </p>
+                <a href="https://www.youtube.com/watch?v=9Os0o3wzS_I" target="_blank" class="video-link">
+                    ▶️ Көру (22:41)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="intermediate">
+                <div class="video-thumbnail">🧮</div>
+                <span class="difficulty intermediate">Орташа</span>
+                <h3 class="video-title">Python Calculator Project</h3>
+                <p class="video-description">
+                    Python-да толық функционалды калькулятор жасау. Практикалық жоба.
+                </p>
+                <a href="https://www.youtube.com/watch?v=7h1s2SojIRw" target="_blank" class="video-link">
+                    ▶️ Көру (45:23)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="intermediate">
+                <div class="video-thumbnail">🤖</div>
+                <span class="difficulty intermediate">Орташа</span>
+                <h3 class="video-title">Python Telegram Bot Tutorial</h3>
+                <p class="video-description">
+                    Telegram-да өз ботаңызды жасауды үйреніңіз. Bot API қолдану.
+                </p>
+                <a href="https://www.youtube.com/watch?v=5fO0j9cRdCw" target="_blank" class="video-link">
+                    ▶️ Көру (1:12:05)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="beginner">
+                <div class="video-thumbnail">📦</div>
+                <span class="difficulty beginner">Бастауыш</span>
+                <h3 class="video-title">Python Lists and Dictionaries</h3>
+                <p class="video-description">
+                    Тізімдер мен сөздіктермен жұмыс істеу. Деректер құрылымдары.
+                </p>
+                <a href="https://www.youtube.com/watch?v=xl7kG3mKcQ8" target="_blank" class="video-link">
+                    ▶️ Көру (28:56)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="intermediate">
+                <div class="video-thumbnail">📁</div>
+                <span class="difficulty intermediate">Орташа</span>
+                <h3 class="video-title">Python File Handling</h3>
+                <p class="video-description">
+                    Файлдармен жұмыс: оқу, жазу, құру. Практикалық мысалдар.
+                </p>
+                <a href="https://www.youtube.com/watch?v=uhX4J1wSxes" target="_blank" class="video-link">
+                    ▶️ Көру (32:14)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="advanced">
+                <div class="video-thumbnail">🌐</div>
+                <span class="difficulty advanced">Жоғарғы</span>
+                <h3 class="video-title">Python Web Scraping</h3>
+                <p class="video-description">
+                    Веб-сайттардан деректерді алу. Beautiful Soup қолдану.
+                </p>
+                <a href="https://www.youtube.com/watch?v=XVuLYnJwhl8" target="_blank" class="video-link">
+                    ▶️ Көру (1:05:42)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="advanced">
+                <div class="video-thumbnail">🤖</div>
+                <span class="difficulty advanced">Жоғарғы</span>
+                <h3 class="video-title">Python Machine Learning Basics</h3>
+                <p class="video-description">
+                    Машиналық оқыту негіздері. Scikit-learn қолдану.
+                </p>
+                <a href="https://www.youtube.com/watch?v=7eh4d6sabA0" target="_blank" class="video-link">
+                    ▶️ Көру (1:28:15)
+                </a>
+            </div>
+
+            <div class="video-card" data-category="projects">
+                <div class="video-thumbnail">🎮</div>
+                <span class="difficulty intermediate">Орташа</span>
+                <h3 class="video-title">Python Game Development</h3>
+                <p class="video-description">
+                    Pygame көмегімен қарапайым ойын жасау. Графика және анимация.
+                </p>
+                <a href="https://www.youtube.com/watch?v=FfWpgLFMI1w" target="_blank" class="video-link">
+                    ▶️ Көру (2:15:30)
+                </a>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h3>📖 Үйрену кеңестері:</h3>
+            <ul style="text-align: left; line-height: 1.8;">
+                <li>🎯 <strong>Кезең бойынша үйреніңіз:</strong> Бастауыш → Орташа → Жоғарғы</li>
+                <li>✍️ <strong>Кодты қайта жазыңыз:</strong> Видеоларды көріп отырып код жазыңыз</li>
+                <li>🧪 <strong>Тәжірибе жасаңыз:</strong> Мысалдарды өзгертіп көріңіз</li>
+                <li>📝 <strong>Ескертпелер жасаңыз:</strong> Маңызды нүктелерді жазып алыңыз</li>
+                <li>🤝 <strong>Практика жасаңыз:</strong> Өз жобаларыңызды жасаңыз</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="back-btn" onclick="window.location.href='../index.html'">
+                ⬅️ Артқа
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function filterVideos(category) {
+            const videos = document.querySelectorAll('.video-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter videos
+            videos.forEach(video => {
+                if (category === 'all' || video.dataset.category === category) {
+                    video.style.display = 'block';
+                    video.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    video.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>

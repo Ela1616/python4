@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>print() және input()</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+    
+    <header>
+        📝 print() және input()
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Енгізу және шығару функциялары
+        </div>
+    </header>
+
+    <div class="lesson-page">
+        <h1>📝 Python-дың негізгі функциялары</h1>
+        
+        <div class="content-box">
+            <h2>🖨️ print() функциясы</h2>
+            <p><strong>print()</strong> функциясы экранға мәтін немесе мәндерді шығарады:</p>
+            <pre>print("Сәлем, әлем!")
+print("Python үйрену өте қызық!")
+print(2024)
+print(True)</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>⌨️ input() функциясы</h2>
+            <p><strong>input()</strong> функциясы пайдаланушыдан мәлімет сұрайды:</p>
+            <pre>name = input("Атыңыз кім? ")
+print("Сәлем,", name, "!")</pre>
+            <p><strong>Маңызды:</strong> input() әрқашан мәтін (string) қайтарады</p>
+        </div>
+
+        <div class="content-box">
+            <h2>💡 Мысалдар</h2>
+            
+            <h3>🎂 Жас есептейтін программа</h3>
+            <pre>current_year = 2024
+birth_year = int(input("Қай жылы туылдыңыз? "))
+age = current_year - birth_year
+print("Сіздің жасыңыз:", age)</pre>
+
+            <h3>🤝 Танысу программасы</h3>
+            <pre>first_name = input("Есіміңіз: ")
+last_name = input("Тегіңіз: ")
+city = input("Қай қалада тұрасыз? ")
+print("Сәлем,", first_name, last_name + "!")
+print("Сіз", city, "қаласынансыз.")</pre>
+
+            <h3>🧮 Қарапайым калькулятор</h3>
+            <pre>a = float(input("Бірінші сан: "))
+b = float(input("Екінші сан: "))
+result = a + b
+print("Қосынды:", result)</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>⚡ Маңызды кеңестер</h2>
+            <ul style="text-align: left; font-size: 16px; line-height: 1.8;">
+                <li>📝 <strong>Мәтінді тырнақшаға алыңыз:</strong> "Мәтін" немесе 'Мәтін'</li>
+                <li>🔢 <strong>Сандар үшін:</strong> int() немесе float() қолданыңыз</li>
+                <li>➕ <strong>Қосу операциясы:</strong> string үшін қосу, сан үшін арифметикалық қосу</li>
+                <li>💬 <strong>Бірнеше мән:</strong> print(a, b, c) - бос орын арқылы</li>
+            </ul>
+        </div>
+
+        <div class="python-editor">
+            <h3>💻 Интерактивті Python редакторы</h3>
+            <div class="editor-container">
+                <div class="code-input">
+                    <h4>Кодыңызды жазыңыз:</h4>
+                    <textarea id="pythonCode" style="width: 100%; height: 200px; padding: 15px; border-radius: 10px; border: none; font-family: 'Courier New', monospace; font-size: 14px; resize: vertical;" placeholder="Мысалы:
+name = input('Атыңыз: ')
+print('Сәлем,', name, '!')">name = input("Атыңыз кім? ")
+print("Қош келдіңіз,", name + "!")</textarea>
+                    <button id="runCodeBtn" class="run-btn">▶️ Кодты орындау</button>
+                </div>
+                <div class="code-output">
+                    <h4>Нәтиже:</h4>
+                    <div id="pythonOutput">Код орындалуын күтіңіз...</div>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="markLessonComplete('print_input')" style="background: linear-gradient(45deg, #27ae60, #2ecc71); margin: 20px 0;">
+            ✅ Осы сабақты аяқтадым
+        </button>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://www.youtube.com/watch?v=k9TUPpGqYTo" target="_blank" class="video-link">
+                ▶️ YouTube: print & input Tutorial
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="back-btn" onclick="window.location.href='install.html'">
+                ⬅️ Артқа
+            </button>
+            <button onclick="window.location.href='variables.html'" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                Келесі сабақ ➡️
+            </button>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

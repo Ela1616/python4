@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Айнымалылар</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+    
+    <header>
+        🏷️ Айнымалылар және типтер
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Деректерді сақтау және өңдеу
+        </div>
+    </header>
+
+    <div class="lesson-page">
+        <h1>🏷️ Python айнымалылары</h1>
+        
+        <div class="content-box">
+            <h2>📦 Айнымалы деген не?</h2>
+            <p><strong>Айнымалы</strong> - деректерді сақтауға арналған контейнер. Оған сан, мәтін немесе басқа мәндерді сақтауға болады.</p>
+            <pre>name = "Айжан"        # мәтін (string)
+age = 16            # бүтін сан (int)
+height = 1.65       # қалқымалы сан (float)
+is_student = True   # логикалық мән (bool)</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>🔢 Python типтері</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                <div style="background: linear-gradient(45deg, #e74c3c, #c0392b); color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                    <h4>int</h4>
+                    <p>Бүтін сандар<br><code>25, -10, 0</code></p>
+                </div>
+                <div style="background: linear-gradient(45deg, #3498db, #2980b9); color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                    <h4>float</h4>
+                    <p>Қалқымалы сандар<br><code>3.14, -0.5, 2.0</code></p>
+                </div>
+                <div style="background: linear-gradient(45deg, #27ae60, #2ecc71); color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                    <h4>str</h4>
+                    <p>Мәтін<br><code>"Сәлем", 'Python'</code></p>
+                </div>
+                <div style="background: linear-gradient(45deg, #f39c12, #e67e22); color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                    <h4>bool</h4>
+                    <p>Логикалық<br><code>True, False</code></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>💡 Мысалдар</h2>
+            
+            <h3>🎓 Оқушы туралы ақпарат</h3>
+            <pre># Айнымалыларды анықтау
+student_name = "Ерлан"
+student_age = 17
+student_grade = 11
+average_score = 4.2
+is_excellent = True
+
+# Ақпаратты шығару
+print("Оқушы аты:", student_name)
+print("Жасы:", student_age)
+print("Сыныбы:", student_grade)
+print("Орташа баға:", average_score)
+print("Мінсіз оқушы ма?", is_excellent)</pre>
+
+            <h3>🧮 Математикалық операциялар</h3>
+            <pre>a = 15
+b = 4
+
+print("Қосынды:", a + b)        # 19
+print("Айырма:", a - b)         # 11  
+print("Көбейтінді:", a * b)     # 60
+print("Бөлінді:", a / b)        # 3.75
+print("Бүтін бөлінді:", a // b) # 3
+print("Қалдық:", a % b)         # 3
+print("Дәреже:", a ** b)        # 50625</pre>
+
+            <h3>🔄 Типтерді өзгерту</h3>
+            <pre># Мәтінді санға айналдыру
+age_text = "16"
+age_number = int(age_text)  # 16
+
+# Санды мәтінге айналдыру
+score = 95
+score_text = str(score)     # "95"
+
+# Мәтінді қалқымалы санға айналдыру
+price = "25.99"
+price_float = float(price)  # 25.99</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>⚠️ Маңызды ережелер</h2>
+            <ul style="text-align: left; font-size: 16px; line-height: 1.8;">
+                <li>📝 <strong>Атаулар латын әріптерінен басталуы керек</strong> (a-z, A-Z) немесе _ таңбасынан</li>
+                <li>🚫 <strong>Python кілт сөздерін қолдануға болмайды</strong> (if, else, for, while, etc.)</li>
+                <li>📏 <strong>Атауларда бос орын болмауы керек</strong> (student_name, studentAge)</li>
+                <li>🔤 <strong>Регистр маңызды</strong> (Name, name, NAME - бұлар әртүрлі айнымалылар)</li>
+                <li>💡 <strong>Атаулар мағыналы болуы керек</strong> (age, name, score)</li>
+            </ul>
+        </div>
+
+        <div class="python-editor">
+            <h3>💻 Интерактивті жаттығу</h3>
+            <div class="editor-container">
+                <div class="code-input">
+                    <h4>Өз айнымалыларыңызды жасаңыз:</h4>
+                    <textarea id="pythonCode" style="width: 100%; height: 250px; padding: 15px; border-radius: 10px; border: none; font-family: 'Courier New', monospace; font-size: 14px; resize: vertical;" placeholder="Мысалы:
+name = 'Менің есімім'
+age = 16
+hobby = 'программалау'
+print('Сәлем, менің атым', name)
+print('Мен', age, 'жастамын')
+print('Менің хоббиым:', hobby)"># Өз айнымалыларыңызды жасаңыз
+name = "Айжан"
+age = 16
+favorite_subject = "Математика"
+height = 1.65
+
+# Ақпаратты шығару
+print("Менің атым:", name)
+print("Менің жасым:", age)
+print("Менің сүйікті пәнім:", favorite_subject)
+print("Менің бойым:", height, "метр")</textarea>
+                    <button id="runCodeBtn" class="run-btn">▶️ Кодты орындау</button>
+                </div>
+                <div class="code-output">
+                    <h4>Нәтиже:</h4>
+                    <div id="pythonOutput">Код орындалуын күтіңіз...</div>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="markLessonComplete('variables')" style="background: linear-gradient(45deg, #27ae60, #2ecc71); margin: 20px 0;">
+            ✅ Осы сабақты аяқтадым
+        </button>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="video-link">
+                ▶️ YouTube: Variables Tutorial
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="back-btn" onclick="window.location.href='print_input.html'">
+                ⬅️ Артқа
+            </button>
+            <button onclick="window.location.href='if_else.html'" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                Келесі сабақ ➡️
+            </button>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

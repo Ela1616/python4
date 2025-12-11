@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if/else шартты операторлар</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+    
+    <header>
+        🔀 if/else шартты операторлар
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Программада шешім қабылдау
+        </div>
+    </header>
+
+    <div class="lesson-page">
+        <h1>🔀 Python-да шартты операторлар</h1>
+        
+        <div class="content-box">
+            <h2>🤔 Шартты оператор деген не?</h2>
+            <p><strong>if/else</strong> операторы программаға "егер ... болса, онда ... жаса" деген логиканы қосуға мүмкіндік береді.</p>
+            <pre>age = int(input("Жасыңыз: "))
+
+if age >= 18:
+    print("Сіз ересексіз")
+else:
+    print("Сіз кішісіз")</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>🔧 Негізгі операторлар</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 20px 0;">
+                <div style="background: #3498db; color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                    <h4>></h4>
+                    <p>Үлкен</p>
+                </div>
+                <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                    <h4><</h4>
+                    <p>Кіші</p>
+                </div>
+                <div style="background: #27ae60; color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                    <h4>>=</h4>
+                    <p>Үлкен немесе тең</p>
+                </div>
+                <div style="background: #f39c12; color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                    <h4><=</h4>
+                    <p>Кіші немесе тең</p>
+                </div>
+                <div style="background: #9b59b6; color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                    <h4>==</h4>
+                    <p>Тең</p>
+                </div>
+                <div style="background: #e67e22; color: white; padding: 15px; border-radius: 10px; text-align: center;">
+                    <h4>!=</h4>
+                    <p>Тең емес</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>💡 Практикалық мысалдар</h2>
+            
+            <h3>🎓 Баға қою</h3>
+            <pre>score = float(input("Бағаңыз: "))
+
+if score >= 90:
+    print("Мінсіз! 🌟")
+elif score >= 75:
+    print("Жақсы! 👍")
+elif score >= 60:
+    print("Орташа 😐")
+else:
+    print("Жаман 😞")</pre>
+
+            <h3>🔐 Қарапайым логин</h3>
+            <pre>username = input("Пайдаланушы аты: ")
+password = input("Пароль: ")
+
+if username == "admin" and password == "12345":
+    print("Кіру сәтті! ✅")
+else:
+    print("Қате пайдаланушы аты немесе пароль! ❌")</pre>
+
+            <h3>🌡️ Температура тексеру</h3>
+            <pre>temperature = int(input("Температура (Celsius): "))
+
+if temperature > 30:
+    print("Ыстық! ☀️")
+elif temperature > 15:
+    print("Жылы! 🌤️")
+elif temperature > 0:
+    print("Суық! ❄️")
+else:
+    print("Өте суық! 🧊")</pre>
+
+            <h3>🍕 Тағам таңдау</h3>
+            <pre>weather = input("Күн қалай? (ыстық/суық/жаңбыр): ")
+
+if weather == "ыстық":
+    print("Балмұздақ жеңіз! 🍦")
+elif weather == "жаңбыр":
+    print("Шай ішіңіз! ☕")
+elif weather == "суық":
+    print("Шорпа ішіңіз! 🍲")
+else:
+    print("Тағам таңдай алмадым 🤔")</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>⚠️ Маңызды ережелер</h2>
+            <ul style="text-align: left; font-size: 16px; line-height: 1.8;">
+                <li>📝 <strong>if, elif, else</strong> сөздерінен кейін <strong>:</strong> қою керек</li>
+                <li>🔤 <strong>Код блоктары</strong> 4 бос орын (space) арқылы жазылады</li>
+                <li>🔍 <strong>==</strong> салыстыру үшін, <strong>=</strong> меншіктеу үшін</li>
+                <li>🔗 <strong>and, or, not</strong> көмегімен бірнеше шартты біріктіруге болады</li>
+            </ul>
+        </div>
+
+        <div class="python-editor">
+            <h3>💻 Өзіңіз жасап көріңіз</h3>
+            <div class="editor-container">
+                <div class="code-input">
+                    <h4>Шартты операторлармен бағдарлама жазыңыз:</h4>
+                    <textarea id="pythonCode" style="width: 100%; height: 250px; padding: 15px; border-radius: 10px; border: none; font-family: 'Courier New', monospace; font-size: 14px; resize: vertical;" placeholder="Мысалы:
+age = int(input('Жасыңыз: '))
+
+if age >= 18:
+    print('Ересексіз')
+else:
+    print('Кішісіз')"># Өзіңіздің шартты операторыңызды жазыңыз
+weather = input("Күн қалай? (ыстық/суық/жаңбыр): ")
+
+if weather == "ыстық":
+    print("Күн ыстық! Жеңіл киініңіз 👕")
+elif weather == "жаңбыр":
+    print("Жаңбыр жауып тұр! Ұялы алыңыз ☔")
+elif weather == "суық":
+    print("Күн суық! Жылы киініңіз 🧥")
+else:
+    print("Мен түсінбедим 🤔")</textarea>
+                    <button id="runCodeBtn" class="run-btn">▶️ Кодты орындау</button>
+                </div>
+                <div class="code-output">
+                    <h4>Нәтиже:</h4>
+                    <div id="pythonOutput">Код орындалуын күтіңіз...</div>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="markLessonComplete('if_else')" style="background: linear-gradient(45deg, #27ae60, #2ecc71); margin: 20px 0;">
+            ✅ Осы сабақты аяқтадым
+        </button>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://www.youtube.com/watch?v=f4KOjWS_KZs" target="_blank" class="video-link">
+                ▶️ YouTube: if/else Tutorial
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="back-btn" onclick="window.location.href='variables.html'">
+                ⬅️ Артқа
+            </button>
+            <button onclick="window.location.href='loops.html'" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                Келесі сабақ ➡️
+            </button>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Циклдар</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+    
+    <header>
+        🔄 Циклдар (for, while)
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Қайталанатын операциялар
+        </div>
+    </header>
+
+    <div class="lesson-page">
+        <h1>🔄 Python-да циклдар</h1>
+        
+        <div class="content-box">
+            <h2>🔁 Цикл деген не?</h2>
+            <p><strong>Цикл</strong> - белгілі бір код блогын бірнеше рет орындауға мүмкіндік беретін программалау құрылымы.</p>
+            <p>Python-да екі түрлі цикл бар: <strong>for</strong> және <strong>while</strong></p>
+        </div>
+
+        <div class="content-box">
+            <h2>🔂 for циклі</h2>
+            <p><strong>for</strong> циклі белгілі сан рет қайталанады:</p>
+            
+            <h3>📝 Негізгі синтаксис:</h3>
+            <pre># range() функциясын қолдану
+for i in range(5):
+    print(i)
+
+# 1-ден 5-ке дейін
+for i in range(1, 6):
+    print(i)
+
+# 2-ден 10-ға дейін, 2-ші қадаммен
+for i in range(2, 11, 2):
+    print(i)</pre>
+
+            <h3>📊 Мысалдар:</h3>
+            <pre># 1-ден 10-ға дейінгі сандарды шығару
+print("1-ден 10-ға дейінгі сандар:")
+for i in range(1, 11):
+    print(i)
+
+# Көбейту кестесі
+n = 5
+print(f"{n} санының көбейту кестесі:")
+for i in range(1, 11):
+    print(f"{n} x {i} = {n * i}")</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>⏰ while циклі</h2>
+            <p><strong>while</strong> циклі шарт ақиқат болғанша орындалады:</p>
+            
+            <h3>📝 Негізгі синтаксис:</h3>
+            <pre># Қарапайым мысал
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+
+# Пайдаланушыдан деректерді сұрау
+user_input = ""
+while user_input != "шығу":
+    user_input = input("Мәтін енгізіңіз (шығу үшін 'шығу' жазыңыз): ")
+    print("Сіз енгіздіңіз:", user_input)</pre>
+
+            <h3>📊 Практикалық мысалдар:</h3>
+            <pre># Санау бағдарламасы
+count = 1
+while count <= 5:
+    print(f"Саны: {count}")
+    count += 1
+
+# Қарапайым калькулятор
+result = "иә"
+while result.lower() == "иә":
+    a = float(input("Бірінші сан: "))
+    b = float(input("Екінші сан: "))
+    print(f"Қосынды: {a + b}")
+    result = input("Қайта есептеу керек пе? (иә/жоқ): ")</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>🎯 Интерактивті мысалдар</h2>
+            
+            <h3>🎲 Қарапайым ойын</h3>
+            <pre>import random
+
+# 1-ден 10-ға дейінгі санды болжау
+secret_number = random.randint(1, 10)
+attempts = 0
+
+print("1-ден 10-ға дейінгі санды болжаңыз!")
+
+while True:
+    guess = int(input("Болжаңыз: "))
+    attempts += 1
+    
+    if guess == secret_number:
+        print(f"🎉 Дұрыс! {attempts} рет болжадыңыз!")
+        break
+    elif guess < secret_number:
+        print("⬆️ Үлкен санды болжаңыз")
+    else:
+        print("⬇️ Кіші санды болжаңыз")</pre>
+
+            <h3>📋 Тізіммен жұмыс</h3>
+            <pre># Оқушылардың тізімі
+students = ["Айжан", "Ерлан", "Мәдіна", "Даулет", "Аруна"]
+
+print("Оқушылар тізімі:")
+for i, student in enumerate(students, 1):
+    print(f"{i}. {student}")
+
+# While циклімен
+count = 0
+while count < len(students):
+    print(f"Оқушы {count + 1}: {students[count]}")
+    count += 1</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>⚡ break және continue</h2>
+            <ul style="text-align: left; font-size: 16px; line-height: 1.8;">
+                <li>🚫 <strong>break</strong> - циклді тоқтату</li>
+                <li>⏭️ <strong>continue</strong> - ағымдағы итерацияны өткізіп жіберу</li>
+            </ul>
+            
+            <pre># break мысалы
+for i in range(10):
+    if i == 5:
+        break
+    print(i)  # 0, 1, 2, 3, 4
+
+# continue мысалы
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)  # 0, 1, 3, 4</pre>
+        </div>
+
+        <div class="python-editor">
+            <h3>💻 Өзіңіз жасап көріңіз</h3>
+            <div class="editor-container">
+                <div class="code-input">
+                    <h4>Циклдармен бағдарлама жазыңыз:</h4>
+                    <textarea id="pythonCode" style="width: 100%; height: 250px; padding: 15px; border-radius: 10px; border: none; font-family: 'Courier New', monospace; font-size: 14px; resize: vertical;" placeholder="Мысалы:
+for i in range(1, 6):
+    print(f'Саны: {i}')"># Өзіңіздің цикліңізді жазыңыз
+print("5 санының көбейту кестесі:")
+for i in range(1, 11):
+    result = 5 * i
+    print(f"5 x {i} = {result}")
+
+print("\nWhile циклімен санау:")
+count = 1
+while count <= 3:
+    print(f"Саны: {count}")
+    count += 1</textarea>
+                    <button id="runCodeBtn" class="run-btn">▶️ Кодты орындау</button>
+                </div>
+                <div class="code-output">
+                    <h4>Нәтиже:</h4>
+                    <div id="pythonOutput">Код орындалуын күтіңіз...</div>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="markLessonComplete('loops')" style="background: linear-gradient(45deg, #27ae60, #2ecc71); margin: 20px 0;">
+            ✅ Осы сабақты аяқтадым
+        </button>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://www.youtube.com/watch?v=6iF8Xb7Z3wQ" target="_blank" class="video-link">
+                ▶️ YouTube: Циклдар Tutorial
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="back-btn" onclick="window.location.href='if_else.html'">
+                ⬅️ Артқа
+            </button>
+            <button onclick="window.location.href='functions.html'" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                Келесі сабақ ➡️
+            </button>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

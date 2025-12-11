@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практикалық жаттығулар</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+    
+    <header>
+        💪 Практикалық жаттығулар
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Python дағдыларыңызды жетілдіріңіз
+        </div>
+    </header>
+
+    <div class="lesson-page">
+        <h1>💪 Python практикалық жаттығулары</h1>
+        
+        <div class="content-box">
+            <h2>🎯 Практиканың маңыздылығы</h2>
+            <p>Программалауды үйренудің ең жақсы жолы - көп практика жасау! Бұл бөлімде сіз әртүрлі деңгейдегі тапсырмаларды орындайсыз.</p>
+        </div>
+
+        <div class="content-box">
+            <h2>🔰 1-деңгей: Негізгі жаттығулар</h2>
+            
+            <h3>📝 1.1 Қосынды табу бағдарламасы</h3>
+            <p><strong>Тапсырма:</strong> Пайдаланушыдан екі сан сұрап, олардың қосындысын шығару бағдарламасын жазыңыз.</p>
+            <pre>a = float(input("Бірінші сан: "))
+b = float(input("Екінші сан: "))
+print("Қосынды:", a + b)</pre>
+
+            <h3>📝 1.2 Жас есептеу</h3>
+            <p><strong>Тапсырма:</strong> Пайдаланушыдан туған жылын сұрап, қазіргі жасін есептеу бағдарламасы.</p>
+            <pre>current_year = 2024
+birth_year = int(input("Туған жылыңыз: "))
+age = current_year - birth_year
+print("Сіздің жасыңыз:", age)</pre>
+
+            <h3>📝 1.3 Айналым құбылғысы</h3>
+            <p><strong>Тапсырма:</strong> Цельсий градусын Фаренгейтқа айналдыру бағдарламасы.</p>
+            <pre>celsius = float(input("Цельсий градусы: "))
+fahrenheit = (celsius * 9/5) + 32
+print("Фаренгейт:", fahrenheit)</pre>
+
+            <h3>📝 1.4 Жеңіл шартты тексеру</h3>
+            <p><strong>Тапсырма:</strong> Сан оң ма, теріс пе, әлде нөлге тең пе екенін анықтау.</p>
+            <pre>number = float(input("Сан енгізіңіз: "))
+
+if number > 0:
+    print("Бұл оң сан")
+elif number < 0:
+    print("Бұл теріс сан")
+else:
+    print("Бұл нөл")</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>⚡ 2-деңгей: Орташа күрделілік</h2>
+            
+            <h3>📝 2.1 Көбейту кестесі</h3>
+            <p><strong>Тапсырма:</strong> 1-ден 10-ға дейінгі көбейту кестесін шығару.</p>
+            <pre>for i in range(1, 11):
+    print(f"5 x {i} = {5 * i}")</pre>
+
+            <h3>📝 2.2 Фибоначчи тізбегі</h3>
+            <p><strong>Тапсырма:</strong> Фибоначчи сандарын шығару (0, 1, 1, 2, 3, 5, 8, ...).</p>
+            <pre>n = int(input("Мүше санын енгізіңіз: "))
+
+a, b = 0, 1
+print("Фибоначчи тізбегі:")
+for i in range(n):
+    print(a, end=" ")
+    a, b = b, a + b</pre>
+
+            <h3>📝 2.3 Жай сан тексеру</h3>
+            <p><strong>Тапсырма:</strong> Енгізілген санның жай сан екенін тексеру.</p>
+            <pre>def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+number = int(input("Сан енгізіңіз: "))
+if is_prime(number):
+    print(f"{number} - жай сан")
+else:
+    print(f"{number} - құрама сан")</pre>
+
+            <h3>📝 2.4 Ең үлкен санды табу</h3>
+            <p><strong>Тапсырма:</strong> Тізімдегі ең үлкен санды табу.</p>
+            <pre>def find_max(numbers):
+    max_num = numbers[0]
+    for num in numbers:
+        if num > max_num:
+            max_num = num
+    return max_num
+
+numbers = [3, 7, 2, 9, 1, 8]
+print("Ең үлкен сан:", find_max(numbers))</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>🚀 3-деңгей: Күрделі жобалар</h2>
+            
+            <h3>📝 3.1 Студенттік баға жүйесі</h3>
+            <p><strong>Тапсырма:</strong> Оқушының бағаларын енгізіп, орташа баға мен баға әріпін есептеу.</p>
+            <pre>def calculate_grade(scores):
+    average = sum(scores) / len(scores)
+    
+    if average >= 90:
+        letter_grade = "A"
+    elif average >= 80:
+        letter_grade = "B"
+    elif average >= 70:
+        letter_grade = "C"
+    elif average >= 60:
+        letter_grade = "D"
+    else:
+        letter_grade = "F"
+    
+    return average, letter_grade
+
+# Тест
+student_scores = [85, 92, 78, 96]
+avg, grade = calculate_grade(student_scores)
+print(f"Орташа баға: {avg:.1f}")
+print(f"Баға әріпі: {grade}")</pre>
+
+            <h3>📝 3.2 Сөз санау бағдарламасы</h3>
+            <p><strong>Тапсырма:</strong> Мәтіндегі сөздерді санау және ең жиі кездесетін сөзді табу.</p>
+            <pre>def word_counter(text):
+    words = text.lower().split()
+    word_count = {}
+    
+    for word in words:
+        word_count[word] = word_count.get(word, 0) + 1
+    
+    return word_count
+
+def most_frequent_word(text):
+    word_count = word_counter(text)
+    most_common = max(word_count, key=word_count.get)
+    return most_common, word_count[most_common]
+
+# Тест
+text = "python python is great python programming programming is fun"
+word, count = most_frequent_word(text)
+print(f"Ең жиі кездесетін сөз: '{word}' ({count} рет)")</pre>
+
+            <h3>📝 3.3 Судоку шешімі</h3>
+            <p><strong>Тапсырма:</strong> Қарапайым Sudoku бағдарламасын жасау (3x3).</p>
+            <pre>def print_board(board):
+    for row in board:
+        print(" ".join(str(num) for num in row))
+
+def is_valid(board, row, col, num):
+    # Жолды тексеру
+    if num in board[row]:
+        return False
+    
+    # Бағанды тексеру
+    for i in range(3):
+        if board[i][col] == num:
+            return False
+    
+    # 3x3 блокты тексеру
+    start_row, start_col = 3 * (row // 3), 3 * (col // 3)
+    for i in range(start_row, start_row + 3):
+        for j in range(start_col, start_col + 3):
+            if board[i][j] == num:
+                return False
+    
+    return True
+
+def solve_sudoku(board):
+    for row in range(9):
+        for col in range(9):
+            if board[row][col] == 0:
+                for num in range(1, 10):
+                    if is_valid(board, row, col, num):
+                        board[row][col] = num
+                        if solve_sudoku(board):
+                            return True
+                        board[row][col] = 0
+                return False
+    return True
+
+# Тест (қарапайым)
+test_board = [
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+]
+
+print("Бастапқы:")
+print_board(test_board)
+print("\nШешім:")
+solve_sudoku(test_board)
+print_board(test_board)</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>🎮 4-деңгей: Ойындар</h2>
+            
+            <h3>📝 4.1 Санды болжау ойыны</h3>
+            <p><strong>Тапсырма:</strong> 1-ден 100-ге дейінгі санды табу ойыны.</p>
+            <pre>import random
+
+def number_guessing_game():
+    target = random.randint(1, 100)
+    attempts = 0
+    
+    print("1-ден 100-ге дейінгі санды болжаңыз!")
+    
+    while True:
+        guess = int(input("Болжаңыз: "))
+        attempts += 1
+        
+        if guess == target:
+            print(f"🎉 Дұрыс! {attempts} рет болжадыңыз!")
+            break
+        elif guess < target:
+            print("⬆️ Үлкен санды болжаңыз!")
+        else:
+            print("⬇️ Кіші санды болжаңыз!")
+
+number_guessing_game()</pre>
+
+            <h3>📝 4.2 Тік-төртбұрыш салу</h3>
+            <p><strong>Тапсырма:</strong> "*" таңбасымен тік-төртбұрыш салу.</p>
+            <pre>def draw_rectangle(width, height):
+    for i in range(height):
+        print("*" * width)
+
+# Тест
+draw_rectangle(10, 5)</pre>
+
+            <h3>📝 4.3 Калькулятор ойыны</h3>
+            <p><strong>Тапсырма:</strong> Кездейсоқ мысалдарды шешіп, дұрыс жауаптарды санау.</p>
+            <pre>import random
+
+def math_quiz():
+    score = 0
+    total_questions = 5
+    
+    for i in range(total_questions):
+        a = random.randint(1, 20)
+        b = random.randint(1, 20)
+        operation = random.choice(['+', '-', '*'])
+        
+        if operation == '+':
+            correct_answer = a + b
+        elif operation == '-':
+            correct_answer = a - b
+        else:
+            correct_answer = a * b
+        
+        print(f"Сұрақ {i+1}: {a} {operation} {b} = ?")
+        
+        try:
+            user_answer = int(input("Жауабыңыз: "))
+            if user_answer == correct_answer:
+                print("✅ Дұрыс!")
+                score += 1
+            else:
+                print(f"❌ Қате! Дұрыс жауап: {correct_answer}")
+        except ValueError:
+            print("❌ Сан енгізіңіз!")
+        
+        print()
+    
+    percentage = (score / total_questions) * 100
+    print(f"Нәтиже: {score}/{total_questions} ({percentage:.0f}%)")
+    
+    if percentage >= 80:
+        print("🏆 Керемет!")
+    elif percentage >= 60:
+        print("👍 Жақсы!")
+    else:
+        print("📚 Тағы жаттығыңыз!")
+
+math_quiz()</pre>
+        </div>
+
+        <div class="python-editor">
+            <h3>💻 Өзіңіздің жаттығуыңызды жасаңыз</h3>
+            <div class="editor-container">
+                <div class="code-input">
+                    <h4>Жаттығу кодыңызды жазыңыз:</h4>
+                    <textarea id="pythonCode" style="width: 100%; height: 250px; padding: 15px; border-radius: 10px; border: none; font-family: 'Courier New', monospace; font-size: 14px; resize: vertical;" placeholder="Мысалы:
+def my_exercise():
+    # Сіздің жаттығуыңыз
+    for i in range(1, 6):
+        print(f'Жаттығу {i}')
+    
+    # Қосымша функция
+    def greet(name):
+        return f'Сәлем, {name}!'
+    
+    print(greet('Python оқушысы'))
+
+my_exercise()"># Өзіңіздің жаттығуыңызды жазыңыз
+def practice_exercise():
+    print("=== Менің жаттығуым ===")
+    
+    # 1-ден 5-ке дейінгі сандарды шығару
+    for i in range(1, 6):
+        print(f"Сан: {i}")
+    
+    # Пайдаланушыдан атын сұрау
+    name = input("Атыңыз кім? ")
+    print(f"Сәлем, {name}!")
+    
+    # Жай функция
+    def calculate_square(number):
+        return number ** 2
+    
+    # Квадрат есептеу
+    num = float(input("Квадратын есептейтін сан: "))
+    result = calculate_square(num)
+    print(f"{num} санының квадраты: {result}")
+
+practice_exercise()</textarea>
+                    <button id="runCodeBtn" class="run-btn">▶️ Кодты орындау</button>
+                </div>
+                <div class="code-output">
+                    <h4>Нәтиже:</h4>
+                    <div id="pythonOutput">Код орындалуын күтіңіз...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>📈 Прогресстi қалай бағалауға болады?</h2>
+            <ul style="text-align: left; line-height: 1.8;">
+                <li>✅ <strong>1-деңгей (100%):</strong> Барлық негізгі тапсырмаларды орындау</li>
+                <li>✅ <strong>2-деңгей (75%):</strong> Орташа күрделіліктегі тапсырмаларды шешу</li>
+                <li>✅ <strong>3-деңгей (50%):</strong> Күрделі алгоритмдерді меңгеру</li>
+                <li>✅ <strong>4-деңгей (25%):</strong> Ойындар мен интерактивті бағдарламалар жасау</li>
+            </ul>
+        </div>
+
+        <button onclick="markLessonComplete('practice')" style="background: linear-gradient(45deg, #27ae60, #2ecc71); margin: 20px 0;">
+            ✅ Осы сабақты аяқтадым
+        </button>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="video-link">
+                ▶️ YouTube: Python Practice
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="back-btn" onclick="window.location.href='project_bot.html'">
+                ⬅️ Артқа
+            </button>
+            <button onclick="window.location.href='mini_test.html'" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                Тест тапсыру ➡️
+            </button>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

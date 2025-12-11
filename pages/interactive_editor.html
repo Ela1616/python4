@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивті Python редакторы</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <style>
+        .editor-tabs {
+            display: flex;
+            background: #34495e;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+        }
+        .editor-tab {
+            padding: 12px 20px;
+            background: #34495e;
+            color: #ecf0f1;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .editor-tab.active {
+            background: #2c3e50;
+        }
+        .editor-tab:hover {
+            background: #2c3e50;
+        }
+        .examples-container {
+            background: #2c3e50;
+            border-radius: 0 0 10px 10px;
+            padding: 20px;
+        }
+        .example-section {
+            display: none;
+        }
+        .example-section.active {
+            display: block;
+        }
+        .syntax-highlight {
+            color: #e74c3c;
+        }
+        .keyword { color: #3498db; font-weight: bold; }
+        .string { color: #2ecc71; }
+        .number { color: #f39c12; }
+        .comment { color: #95a5a6; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+    
+    <header>
+        💻 Интерактивті Python редакторы
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Нақты уақытта Python кодын орындаңыз
+        </div>
+    </header>
+
+    <div class="lesson-page">
+        <h1>🚀 Жинақталған Python ортасы</h1>
+        
+        <div class="content-box">
+            <p>Бұл интерактивті редакторда Python кодын жазып, бірден нәтижесін көре аласыз! Төмендегі мысалдарды басып көріңіз.</p>
+        </div>
+
+        <div class="python-editor">
+            <div class="editor-tabs">
+                <button class="editor-tab active" onclick="showTab('basic')">Негізгі</button>
+                <button class="editor-tab" onclick="showTab('variables')">Айнымалылар</button>
+                <button class="editor-tab" onclick="showTab('conditions')">Шарттар</button>
+                <button class="editor-tab" onclick="showTab('loops')">Циклдар</button>
+                <button class="editor-tab" onclick="showTab('functions')">Функциялар</button>
+            </div>
+            
+            <div class="examples-container">
+                <div id="basic" class="example-section active">
+                    <h4>Негізгі мысалдар:</h4>
+                    <pre><button class="copy-btn" onclick="copyExample('basic1')">Көшіру</button><span class="comment"># Негізгі шығару</span>
+print("Сәлем, Python!")
+print(2024)
+print(True, False)</pre>
+                    
+                    <pre><button class="copy-btn" onclick="copyExample('basic2')">Көшіру</button><span class="comment"># Енгізу</span>
+name = <span class="string">input</span>(<span class="string">"Атыңыз: "</span>)
+print(<span class="string">"Сәлем, "</span>, name)</pre>
+                </div>
+
+                <div id="variables" class="example-section">
+                    <h4>Айнымалылар:</h4>
+                    <pre><button class="copy-btn" onclick="copyExample('var1')">Көшіру</button><span class="comment"># Әртүрлі типтер</span>
+age = <span class="number">25</span>              <span class="comment"># int</span>
+height = <span class="number">1.75</span>          <span class="comment"># float</span>
+name = <span class="string">"Айжан"</span>        <span class="comment"># str</span>
+is_student = <span class="keyword">True</span>   <span class="comment"># bool</span>
+
+print(<span class="string">"Есімі: "</span>, name)
+print(<span class="string">"Жасы: "</span>, age)
+print(<span class="string">"Бойы: "</span>, height)</pre>
+                </div>
+
+                <div id="conditions" class="example-section">
+                    <h4>Шартты операторлар:</h4>
+                    <pre><button class="copy-btn" onclick="copyExample('cond1')">Көшіру</button>age = <span class="number">int</span>(<span class="string">input</span>(<span class="string">"Жасыңыз: "</span>))
+
+<span class="keyword">if</span> age >= <span class="number">18</span>:
+    print(<span class="string">"Сіз ересексіз"</span>)
+<span class="keyword">else</span>:
+    print(<span class="string">"Сіз кішісіз"</span>)</pre>
+                </div>
+
+                <div id="loops" class="example-section">
+                    <h4>Циклдар:</h4>
+                    <pre><button class="copy-btn" onclick="copyExample('loop1')">Көшіру</button><span class="comment"># for циклі</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>):
+    print(<span class="string">"Сан: "</span>, i)
+
+<span class="comment"># while циклі</span>
+count = <span class="number">0</span>
+<span class="keyword">while</span> count < <span class="number">3</span>:
+    print(<span class="string">"Санау: "</span>, count)
+    count += <span class="number">1</span></pre>
+                </div>
+
+                <div id="functions" class="example-section">
+                    <h4>Функциялар:</h4>
+                    <pre><button class="copy-btn" onclick="copyExample('func1')">Көшіру</button><span class="comment"># Қарапайым функция</span>
+<span class="keyword">def</span> <span class="function">greet</span>(name):
+    <span class="keyword">return</span> <span class="string">f"Сәлем, {name}!"</span>
+
+<span class="comment"># Функцияны қолдану</span>
+message = <span class="function">greet</span>(<span class="string">"Айжан"</span>)
+print(message)</pre>
+                </div>
+            </div>
+
+            <div class="editor-container" style="margin-top: 20px;">
+                <div class="code-input">
+                    <h4>📝 Кодыңызды жазыңыз:</h4>
+                    <textarea id="pythonCode" style="width: 100%; height: 300px; padding: 15px; border: none; font-family: 'Courier New', monospace; font-size: 14px; resize: vertical; background: #2c3e50; color: #ecf0f1; border-radius: 0 0 10px 10px;" placeholder="Python кодыңызды мұнда жазыңыз...">print("Сәлем, интерактивті Python редакторы!")
+name = input("Атыңыз кім? ")
+print("Қош келдіңіз,", name + "!")</textarea>
+                    <div style="margin-top: 15px;">
+                        <button id="runCodeBtn" class="run-btn">▶️ Кодты орындау</button>
+                        <button onclick="clearCode()" style="background: linear-gradient(45deg, #95a5a6, #7f8c8d); margin-left: 10px;">🗑️ Тазалау</button>
+                        <button onclick="saveCode()" style="background: linear-gradient(45deg, #f39c12, #e67e22); margin-left: 10px;">💾 Сақтау</button>
+                    </div>
+                </div>
+                <div class="code-output">
+                    <h4>📊 Нәтиже:</h4>
+                    <div id="pythonOutput">Код орындалуын күтіңіз... (Pyodide жүктелуде)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h3>🎯 Кеңестер:</h3>
+            <ul style="text-align: left;">
+                <li>💡 <strong>Мысалдарды таңдаңыз:</strong> Жоғарыдағы вкладкалардан әртүрлі мысалдарды көріңіз</li>
+                <li>📋 <strong>Көшіру:</strong> "Көшіру" батырмасын басып кодты редакторға алыңыз</li>
+                <li>▶️ <strong>Орындау:</strong> "Кодты орындау" батырмасын басып нәтижені көріңіз</li>
+                <li>💾 <strong>Сақтау:</strong> Кодты локальді жадта сақтаңыз</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="back-btn" onclick="window.location.href='../index.html'">
+                ⬅️ Артқа
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let pyodide;
+        
+        function showTab(tabName) {
+            // Барлық вкладкаларды жасыру
+            document.querySelectorAll('.example-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.editor-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Таңдалған вкладканы көрсету
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyExample(exampleId) {
+            const examples = {
+                basic1: 'print("Сәлем, Python!")\nprint(2024)\nprint(True, False)',
+                basic2: 'name = input("Атыңыз: ")\nprint("Сәлем, ", name)',
+                var1: 'age = 25              # int\nheight = 1.75          # float\nname = "Айжан"        # str\nis_student = True   # bool\n\nprint("Есімі: ", name)\nprint("Жасы: ", age)\nprint("Бойы: ", height)',
+                cond1: 'age = int(input("Жасыңыз: "))\n\nif age >= 18:\n    print("Сіз ересексіз")\nelse:\n    print("Сіз кішісіз")',
+                loop1: '# for циклі\nfor i in range(5):\n    print("Сан: ", i)\n\n# while циклі\ncount = 0\nwhile count < 3:\n    print("Санау: ", count)\n    count += 1',
+                func1: '# Қарапайым функция\ndef greet(name):\n    return f"Сәлем, {name}!"\n\n# Функцияны қолдану\nmessage = greet("Айжан")\nprint(message)'
+            };
+            
+            document.getElementById('pythonCode').value = examples[exampleId];
+            showNotification('Код көшірілді!', 'success');
+        }
+        
+        function clearCode() {
+            document.getElementById('pythonCode').value = '';
+            document.getElementById('pythonOutput').textContent = 'Код тазартылды. Жаңа код жазыңыз...';
+        }
+        
+        function saveCode() {
+            const code = document.getElementById('pythonCode').value;
+            localStorage.setItem('savedPythonCode', code);
+            showNotification('Код сақталды!', 'success');
+        }
+        
+        function loadSavedCode() {
+            const saved = localStorage.getItem('savedPythonCode');
+            if (saved) {
+                document.getElementById('pythonCode').value = saved;
+            }
+        }
+        
+        // Бет жүктелгенде сақталған кодты жүктеу
+        window.addEventListener('load', function() {
+            loadSavedCode();
+        });
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор жобасы</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <style>
+        .calculator-demo {
+            background: #2c3e50;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .calc-display {
+            background: #34495e;
+            color: #2ecc71;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .calc-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .calc-btn:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+        
+        .calc-btn.operator {
+            background: #e74c3c;
+        }
+        
+        .calc-btn.operator:hover {
+            background: #c0392b;
+        }
+        
+        .calc-btn.equals {
+            background: #27ae60;
+            grid-column: span 2;
+        }
+        
+        .calc-btn.equals:hover {
+            background: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <div class="current-time" id="currentTime"></div>
+    
+    <header>
+        🧮 Калькулятор жобасы
+        <div style="font-size: 16px; font-weight: 400; margin-top: 10px;">
+            Python-да толық функционалды калькулятор жасау
+        </div>
+    </header>
+
+    <div class="lesson-page">
+        <h1>🧮 Python калькулятор жобасы</h1>
+        
+        <div class="content-box">
+            <h2>🎯 Жоба мақсаты</h2>
+            <p>Бұл сабақта сіз толық функционалды калькулятор жасайсыз. Бұл жобада барлық алған біліміңізді қолданасыз:</p>
+            <ul style="text-align: left;">
+                <li>🔄 input() және print() функциялары</li>
+                <li>🏷️ Айнымалылар мен типтер</li>
+                <li>🔀 Шартты операторлар (if/elif/else)</li>
+                <li>⚡ Функциялар</li>
+                <li>🔁 Циклдар</li>
+            </ul>
+        </div>
+
+        <div class="content-box">
+            <h2>📋 1-нұсқа: Қарапайым калькулятор</h2>
+            <pre># Қарапайым калькулятор
+def simple_calculator():
+    print("=== Калькулятор ===")
+    
+    # Сандарды енгізу
+    try:
+        num1 = float(input("Бірінші санды енгізіңіз: "))
+        operation = input("Операция таңдаңыз (+, -, *, /): ")
+        num2 = float(input("Екінші санды енгізіңіз: "))
+        
+        # Есептеу
+        if operation == "+":
+            result = num1 + num2
+            print(f"Нәтиже: {num1} + {num2} = {result}")
+        elif operation == "-":
+            result = num1 - num2
+            print(f"Нәтиже: {num1} - {num2} = {result}")
+        elif operation == "*":
+            result = num1 * num2
+            print(f"Нәтиже: {num1} * {num2} = {result}")
+        elif operation == "/":
+            if num2 != 0:
+                result = num1 / num2
+                print(f"Нәтиже: {num1} / {num2} = {result}")
+            else:
+                print("Қате: Нөлге бөлу мүмкін емес!")
+        else:
+            print("Қате операция!")
+    
+    except ValueError:
+        print("Қате: Санды дұрыс енгізіңіз!")
+
+# Калькуляторды іске қосу
+simple_calculator()</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>🔄 2-нұсқа: Циклмен калькулятор</h2>
+            <pre># Циклмен жұмыс істейтін калькулятор
+def advanced_calculator():
+    print("=== Кеңейтілген калькулятор ===")
+    
+    while True:
+        try:
+            print("\n--- Мәзір ---")
+            print("1. Қосу (+)")
+            print("2. Азайту (-)")
+            print("3. Көбейту (*)")
+            print("4. Бөлу (/)")
+            print("5. Дәреже (**)")
+            print("6. Шығу")
+            
+            choice = input("Әрекет таңдаңыз (1-6): ")
+            
+            if choice == "6":
+                print("Калькулятор жабылды. Сау болыңыз!")
+                break
+            
+            if choice in ["1", "2", "3", "4", "5"]:
+                num1 = float(input("Бірінші сан: "))
+                num2 = float(input("Екінші сан: "))
+                
+                if choice == "1":
+                    result = num1 + num2
+                    print(f"Нәтиже: {num1} + {num2} = {result}")
+                elif choice == "2":
+                    result = num1 - num2
+                    print(f"Нәтиже: {num1} - {num2} = {result}")
+                elif choice == "3":
+                    result = num1 * num2
+                    print(f"Нәтиже: {num1} * {num2} = {result}")
+                elif choice == "4":
+                    if num2 != 0:
+                        result = num1 / num2
+                        print(f"Нәтиже: {num1} / {num2} = {result}")
+                    else:
+                        print("Қате: Нөлге бөлу мүмкін емес!")
+                elif choice == "5":
+                    result = num1 ** num2
+                    print(f"Нәтиже: {num1} ** {num2} = {result}")
+            else:
+                print("Қате таңдау!")
+        
+        except ValueError:
+            print("Қате: Санды дұрыс енгізіңіз!")
+        except Exception as e:
+            print(f"Қате орын алды: {e}")
+
+# Калькуляторды іске қосу
+advanced_calculator()</pre>
+        </div>
+
+        <div class="content-box">
+            <h2>⚡ 3-нұсқа: Функциялармен калькулятор</h2>
+            <pre># Функциялар қолданылған калькулятор
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b != 0:
+        return a / b
+    else:
+        return "Қате: Нөлге бөлу мүмкін емес!"
+
+def power(a, b):
+    return a ** b
+
+def calculator():
+    print("=== Функционалды калькулятор ===")
+    
+    operations = {
+        "1": ("Қосу", add),
+        "2": ("Азайту", subtract),
+        "3": ("Көбейту", multiply),
+        "4": ("Бөлу", divide),
+        "5": ("Дәреже", power)
+    }
+    
+    try:
+        num1 = float(input("Бірінші сан: "))
+        num2 = float(input("Екінші сан: "))
+        
+        print("\nОперациялар:")
+        for key, (name, _) in operations.items():
+            print(f"{key}. {name}")
+        
+        choice = input("Таңдаңыз (1-5): ")
+        
+        if choice in operations:
+            operation_name, operation_func = operations[choice]
+            result = operation_func(num1, num2)
+            print(f"\n{operation_name}: {num1} және {num2}")
+            print(f"Нәтиже: {result}")
+        else:
+            print("Қате таңдау!")
+    
+    except ValueError:
+        print("Қате: Санды дұрыс енгізіңіз!")
+
+calculator()</pre>
+        </div>
+
+        <div class="calculator-demo">
+            <h3>💻 Демо: Веб-калькулятор</h3>
+            <div class="calc-display" id="calcDisplay">0</div>
+            <div class="calc-buttons">
+                <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
+                <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
+                <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('/')">/</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
+                <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
+                <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('*')">*</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
+                <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
+                <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('-')">-</button>
+                
+                <button class="calc-btn" onclick="clearDisplay()">C</button>
+                <button class="calc-btn" onclick="appendToDisplay('0')">0</button>
+                <button class="calc-btn equals" onclick="calculate()">=</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>🎯 Тапсырмалар</h2>
+            <ol style="text-align: left; line-height: 1.8;">
+                <li>📝 <strong>Қарапайым калькуляторды</strong> жасаңыз (1-нұсқа)</li>
+                <li>🔄 <strong>Циклмен</strong> жұмыс істейтін калькуляторды жасаңыз (2-нұсқа)</li>
+                <li>⚡ <strong>Функцияларды</strong> қолданып калькулятор жасаңыз (3-нұсқа)</li>
+                <li>➕ <strong>Жаңа операциялар қосыңыз</strong> (мысалы, пайыз есептеу)</li>
+                <li>🎨 <strong>Интерфейсті жақсартыңыз</strong> - менюлер мен хабарламалар қосыңыз</li>
+            </ol>
+        </div>
+
+        <div class="content-box">
+            <h2>💡 Кеңестер</h2>
+            <ul style="text-align: left; line-height: 1.8;">
+                <li>🛡️ <strong>Қателерді өңдеңіз:</strong> try/except қолданыңыз</li>
+                <li>🔍 <strong>Деректерді тексеріңіз:</strong> нөлге бөлуді тексеріңіз</li>
+                <li>📱 <strong>Пайдаланушы тәжірибесін жақсартыңыз:</strong> түсінікті хабарламалар</li>
+                <li>⚡ <strong>Функцияларды қолданыңыз:</strong> кодты қайта пайдалану үшін</li>
+                <li>🎯 <strong>Тест жасаңыз:</strong> әртүрлі жағдайларды сынап көріңіз</li>
+            </ul>
+        </div>
+
+        <button onclick="markLessonComplete('calculator')" style="background: linear-gradient(45deg, #27ae60, #2ecc71); margin: 20px 0;">
+            ✅ Осы сабақты аяқтадым
+        </button>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://www.youtube.com/watch?v=7h1s2SojIRw" target="_blank" class="video-link">
+                ▶️ YouTube: Python Calculator Project
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="back-btn" onclick="window.location.href='functions.html'">
+                ⬅️ Артқа
+            </button>
+            <button onclick="window.location.href='project_bot.html'" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                Келесі сабақ ➡️
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            const display = document.getElementById('calcDisplay');
+            if (display.textContent === '0' && value !== '.') {
+                display.textContent = value;
+            } else {
+                display.textContent += value;
+            }
+        }
+        
+        function clearDisplay() {
+            document.getElementById('calcDisplay').textContent = '0';
+        }
+        
+        function calculate() {
+            const display = document.getElementById('calcDisplay');
+            try {
+                const result = eval(display.textContent);
+                display.textContent = result;
+            } catch (error) {
+                display.textContent = 'Қате';
+            }
+        }
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>
